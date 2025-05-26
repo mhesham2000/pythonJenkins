@@ -5,7 +5,7 @@ pipeline{
 	stages{
 		stage("build Docker image"){
 			steps{
-				sh 'docker build mhesham2000/pythonhub:${BUILD_NUBMER} .'
+				sh 'docker build -t mhesham2000/pythonhub:${BUILD_NUMBER} .'
 				}
 					}
 		stage("push Docker image"){
