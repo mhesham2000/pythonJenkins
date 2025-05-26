@@ -5,8 +5,13 @@ pipeline{
 	stages{
 		stage("build Docker image"){
 			steps{
-				sh 'docker build -t python:v1 .'
+				sh 'docker build -t mhesham2000/pythonhub:${BUILD_NUBMER} .'
 				}
+		stage("push Docker image"){
+			steps{
+				sh 'docker push -t mhesham2000/pythonhub:${BUILD_NUBMER} .'
+				}
+
 		}
 	}
 }
