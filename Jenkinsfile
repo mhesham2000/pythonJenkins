@@ -5,7 +5,7 @@ node('agent1'){
 
 	withCredentials([
 		string(credentialsId: 'dockerhub-user', variable: 'DOCKER_USER'),
-		string(credentialsId: 'dockerhub-passsword', variable: 'DOCKER_PASSWORD')
+		string(credentialsId: 'dockerhub-password', variable: 'DOCKER_PASSWORD')
 
 			]){
 			
