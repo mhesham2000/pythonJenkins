@@ -1,4 +1,4 @@
-@Library(libx')_
+@Library('libx')_
 def mydocker = new org.lab3.docker()
 
 
