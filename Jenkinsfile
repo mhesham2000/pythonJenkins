@@ -8,11 +8,11 @@ pipeline{
 		}
 
 	environment{
-		script{
 		
-			DOCKER_USER = Dockerusername
-			DOCKER_PASSWORD = Dockerpassword
-		}
+		
+			DOCKER_USER = Dockerusername()
+			DOCKER_PASSWORD = Dockerpassword()
+		
 	}
 	
 	stages{
