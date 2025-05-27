@@ -1,3 +1,3 @@
 @Library('libx')_
 
-dockpipeline(this)
+dockpipeline()
