@@ -8,10 +8,9 @@ pipeline{
 		}
 
 	environment{
-		
-		
-			DOCKER_USER = Dockerusername()
-			DOCKER_PASSWORD = Dockerpassword()
+
+		DOCKER_USER = credentials('dockerhub-user')
+		DOCKER_PASSWORD = credentials('dockerhub-password')
 		
 	}
 	
