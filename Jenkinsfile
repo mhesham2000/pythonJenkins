@@ -27,7 +27,7 @@ pipeline{
 			steps{
 				script{
 					mydocker.login(DOCKER_USER , DOCKER_PASSWORD)
-					mydocker.dockerPush(mhesham2000/pythonhub)
+					mydocker.dockerPush("mhesham2000/pythonhub")
 					
 					}
 				}
