@@ -1,21 +1,39 @@
+@Library(libx')_
+def mydocker = new org.lab3.docker()
 
 
+pipeline{
+	agent {
+		label 'agent1'
+		}
 
-node('agent1'){
+	environment{
+		script{
+		
+			DOCKER_USER = Dockerusername
+			DOCKER_PASSWORD = Dockerpassword
+		}
+	}
+	
+	stages{
+		stage("build Docker image"){
+			steps{
+				script{
+					
+					mydocker.buildDockerImage("mhesham2000/pythonhub" , BUILD_NUMBER)
+		}
+	}
+}
+		stage("push Docker image"){
+			steps{
+				script{
+					mydocker.login(DOCKER_USER , DOCKER_PASSWORD)
+					mydocker.dockerPush(mhesham2000/pythonhub)
+					
+					}
+				}
+			}
 
-	withCredentials([
-		string(credentialsId: 'dockerhub-user', variable: 'DOCKER_USER'),
-		string(credentialsId: 'dockerhub-password', variable: 'DOCKER_PASSWORD')
-
-			]){
 			
-		 stage('Build Docker image') {
-           		    sh "docker build -t mhesham2000/pythonhub:${env.BUILD_NUMBER} ."
-   					     }
-
-    	   	 stage('Push Docker image') {
-        		    sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}"
-          		    sh "docker push mhesham2000/pythonhub:${env.BUILD_NUMBER}"
-      						  }
-		  		}
+	}
 }
